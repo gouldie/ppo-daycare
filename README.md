@@ -1,4 +1,1 @@
-```
-	> npm install
-	> npm start
-```
+Daycare app for PPO.
