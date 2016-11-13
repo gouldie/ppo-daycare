@@ -1,2 +1,4 @@
-# daycare-app
-Daycare App for PPO
+```
+	> npm install
+	> npm start
+```
