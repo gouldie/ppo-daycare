@@ -3,9 +3,36 @@ body {
   background: #d3d3d3 !important;
 }
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 16rem;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+  margin-left: 'auto';
+  margin-right: 'auto';
+}
+
 .container {
   text-align: center;
-  margin-top: 20px;
 }
 
 h1 {
