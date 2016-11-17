@@ -32,7 +32,7 @@ export default class App extends Component {
           marginLeft: 'auto',
           marginRight: 'auto'
         }}>
-          <p style={{ marginBottom: '5px' }}>Made with ♥ by</p>
+          <p style={{ marginBottom: '5px' }}>made with ♥ by</p>
           <img
             src={'http://i.imgur.com/Y5QiBTf.png'}
             alt="boohoo"
