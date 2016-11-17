@@ -1,6 +1,7 @@
-body {
-  font-family: 'Josefin Sans', sans-serif !important;
-  background: #d3d3d3 !important;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 html {
@@ -8,13 +9,9 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
 body {
+  font-family: 'Josefin Sans', sans-serif !important;
+  background: #d3d3d3 !important;
   position: relative;
   margin: 0;
   padding-bottom: 16rem;
@@ -37,10 +34,6 @@ body {
 
 h1 {
   margin-bottom: 30px;
-}
-
-.machamp {
-  width: 100px;
 }
 
 .calc-width {
