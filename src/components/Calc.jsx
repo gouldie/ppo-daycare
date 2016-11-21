@@ -140,7 +140,7 @@ export default class Calc extends Component {
               max='300'>
             </input>
           </h5>
-          <p>{this.state.cost}</p>
+          <p>${this.state.cost}</p>
         </div>
       </div>
     )
