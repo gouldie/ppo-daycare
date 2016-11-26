@@ -22,7 +22,7 @@ export const Job = (props) => {
       <td>{startLevel}</td>
       <td>{endLevel}</td>
       <td>{exp}</td>
-      <td>{cost}</td>
+      <td>${cost}</td>
       <td style={{maxWidth: '100px', overflow: 'hidden'}}>{notes|| '--'}</td>
       <td className='set-width'>
         <span
