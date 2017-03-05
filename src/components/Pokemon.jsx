@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
+const pokemon = ['squirtle', 'wartortle', 'blastoise']
+
 export default class Pokemon extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			pokemon: undefined,
-			selected: false,
 			search: ''
 		}
 
 		this.onInputChange = this.onInputChange.bind(this)
+		this.onInputSubmit = this.onInputSubmit.bind(this)
 	}
 
 	onInputChange(e) {
@@ -18,23 +20,41 @@ export default class Pokemon extends Component {
 	}
 
 	onInputSubmit(e) {
-
+		if(e.keyCode == 13) {
+			if (pokemon.indexOf(e.target.value) > -1) {
+				console.log('pokemon found')
+				this.setState({ pokemon: e.target.value, search: '' })
+				this.props.onFinishSearch()
+			} else {
+				console.log('saddsasda')
+			}
+		}
 	}
 
-	onBoxSelect() {
+	onPokeballSelect() {
 		if (this.props.id === this.props.currentlySelected) {
 			this.props.onBoxSelect(7)
 		} else {
 			this.props.onBoxSelect(this.props.id)
+			setTimeout(() => {
+				document.querySelector('input').focus()
+			})
 		}
+	}
+
+	onPokemonSelect() {
+		
 	}
 
 	render() {
 		const {
 			id,
-			currentlySelected,
-			onBoxSelect
+			currentlySelected
 		} = this.props
+
+		const {
+			pokemon
+		} = this.state
 
 		return (
 			<div
@@ -47,7 +67,21 @@ export default class Pokemon extends Component {
 					alignItems: 'center',
 					justifyContent: 'space-between' }}
 			>
-				<img src="style/pokeball.png" alt="Pokeball" style={{ width: '50px', height: '50px', marginTop: '25px' }} onClick={() => this.onBoxSelect(id)} />
+				{
+					pokemon ?
+						<img
+							src={`style/pokemon/${pokemon}.png`}
+							alt="Pokemon"
+							style={{ width: '90px', height: '90px', marginTop: '5px' }}
+							onClick={() => this.onPokemonSelect()} />
+						:
+						<img
+							src={`style/pokeball.png`}
+							alt="Pokeball"
+							style={{ width: '50px', height: '50px', marginTop: '25px' }}
+							onClick={() => this.onPokeballSelect()} />
+				}
+
 				{
 					id === currentlySelected &&
 					<input
@@ -56,6 +90,7 @@ export default class Pokemon extends Component {
 						value={this.state.search}
 						style={{ height: '20px' }}
 					  onChange={this.onInputChange}
+						onKeyDown={this.onInputSubmit}
 					/>
 				}
 			</div>
