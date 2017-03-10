@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+const order = ['healthy', 'pois', 'burn', 'para', 'sleep', 'freeze', 'dead']
 const pokemon = ['squirtle', 'wartortle', 'blastoise']
 
 export default class Pokemon extends Component {
@@ -8,6 +9,7 @@ export default class Pokemon extends Component {
 
 		this.state = {
 			pokemon: undefined,
+			status: 'healthy',
 			search: ''
 		}
 
@@ -26,7 +28,7 @@ export default class Pokemon extends Component {
 				this.setState({ pokemon: e.target.value, search: '' })
 				this.props.onFinishSearch()
 			} else {
-				console.log('saddsasda')
+				console.log('no pokemon found')
 			}
 		}
 	}
@@ -43,7 +45,19 @@ export default class Pokemon extends Component {
 	}
 
 	onPokemonSelect() {
-		
+		const current = this.state.status
+		const index = order.indexOf(current)
+		let newStatus
+
+		if (index >= 0 && index < order.length) {
+			if (index === order.length - 1) {
+				newStatus = order[0]
+			} else {
+				newStatus = order[index + 1]
+			}
+		}
+
+		this.setState({ status: newStatus })
 	}
 
 	render() {
@@ -53,8 +67,11 @@ export default class Pokemon extends Component {
 		} = this.props
 
 		const {
-			pokemon
+			pokemon,
+			status
 		} = this.state
+
+		console.log(status)
 
 		return (
 			<div
@@ -68,11 +85,19 @@ export default class Pokemon extends Component {
 					justifyContent: 'space-between' }}
 			>
 				{
+					(status === 'pois' || status === 'burn' || status === 'sleep' || status === 'freeze' || status === 'para') &&
+					<img
+						src={`style/status/${status}.png`}
+						alt="Status"
+						style={{ width: '40px', height: '40px', position: 'absolute' }} />
+				}
+
+				{
 					pokemon ?
 						<img
 							src={`style/pokemon/${pokemon}.png`}
 							alt="Pokemon"
-							style={{ width: '90px', height: '90px', marginTop: '5px' }}
+							style={{ width: '76px', height: '76px', marginTop: '12px', opacity: status === 'dead' ? '0.3' : '1' }}
 							onClick={() => this.onPokemonSelect()} />
 						:
 						<img
@@ -81,6 +106,8 @@ export default class Pokemon extends Component {
 							style={{ width: '50px', height: '50px', marginTop: '25px' }}
 							onClick={() => this.onPokeballSelect()} />
 				}
+
+
 
 				{
 					id === currentlySelected &&
