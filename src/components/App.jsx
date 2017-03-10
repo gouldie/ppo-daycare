@@ -22,6 +22,9 @@ export default class App extends Component {
     return (
       <div>
         <h1>PPO Daycare Buddy<span style={{fontSize: '10px', verticalAlign: 'top'}}>beta</span></h1>
+        <h3 onClick={() => {
+	        window.open ("http://localhost:8080/#/team", "_blank", "innerWidth=600,innerHeight=100,top=100,left=100")
+        }}>Try new team-storer</h3>
         <Calc update={this.mapStorageToState} />
         <JobList update={this.mapStorageToState} />
 

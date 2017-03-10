@@ -9,6 +9,8 @@ export default class TeamStore extends Component {
 			currentlySelected: undefined
 		}
 
+		document.querySelector('body').style.overflow = 'hidden'
+
 		this.onBoxSelect = this.onBoxSelect.bind(this)
 		this.onFinishSearch = this.onFinishSearch.bind(this)
 	}
@@ -23,7 +25,7 @@ export default class TeamStore extends Component {
 
 	render() {
 		return (
-			<div style={{ marginTop: '60px', display: 'flex' }}>
+			<div style={{ display: 'flex', position: 'absolute', top: 0, left: 0  }}>
 				<Pokemon id={1} currentlySelected={this.state.currentlySelected} onBoxSelect={this.onBoxSelect} onFinishSearch={this.onFinishSearch} />
 				<Pokemon id={2} currentlySelected={this.state.currentlySelected} onBoxSelect={this.onBoxSelect} onFinishSearch={this.onFinishSearch} />
 				<Pokemon id={3} currentlySelected={this.state.currentlySelected} onBoxSelect={this.onBoxSelect} onFinishSearch={this.onFinishSearch} />

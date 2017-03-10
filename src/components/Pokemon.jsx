@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const order = ['healthy', 'pois', 'burn', 'para', 'sleep', 'freeze', 'dead']
-const pokemon = ['squirtle', 'wartortle', 'blastoise']
+const db = ['squirtle', 'wartortle', 'blastoise']
 
 export default class Pokemon extends Component {
 	constructor(props) {
@@ -23,7 +23,7 @@ export default class Pokemon extends Component {
 
 	onInputSubmit(e) {
 		if(e.keyCode == 13) {
-			if (pokemon.indexOf(e.target.value) > -1) {
+			if (db.indexOf(e.target.value) > -1) {
 				console.log('pokemon found')
 				this.setState({ pokemon: e.target.value, search: '' })
 				this.props.onFinishSearch()
@@ -71,13 +71,11 @@ export default class Pokemon extends Component {
 			status
 		} = this.state
 
-		console.log(status)
-
 		return (
 			<div
 				style={{
-					width: '100px',
-					height: '100px',
+					width: '125px',
+					height: '125px',
 					backgroundColor: 'lavender',
 					display: 'flex',
 					flexDirection: 'column',
@@ -97,13 +95,13 @@ export default class Pokemon extends Component {
 						<img
 							src={`style/pokemon/${pokemon}.png`}
 							alt="Pokemon"
-							style={{ width: '76px', height: '76px', marginTop: '12px', opacity: status === 'dead' ? '0.3' : '1' }}
+							style={{ width: '76px', height: '76px', marginTop: '24px', opacity: status === 'dead' ? '0.3' : '1' }}
 							onClick={() => this.onPokemonSelect()} />
 						:
 						<img
 							src={`style/pokeball.png`}
 							alt="Pokeball"
-							style={{ width: '50px', height: '50px', marginTop: '25px' }}
+							style={{ width: '50px', height: '50px', marginTop: '37px' }}
 							onClick={() => this.onPokeballSelect()} />
 				}
 
