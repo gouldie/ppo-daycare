@@ -21,7 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>PPO Daycare Buddy<span style={{fontSize: '10px', verticalAlign: 'top'}}>beta</span></h1>
+        <h1>PPO Daycare Buddy</h1>
         <Calc update={this.mapStorageToState} />
         <JobList update={this.mapStorageToState} />
 
