@@ -32,13 +32,13 @@ export default class App extends Component {
           marginLeft: 'auto',
           marginRight: 'auto'
         }}>
-          <p style={{ marginBottom: '5px' }}>made with ♥ by</p>
-          <img
-            src={'http://i.imgur.com/Y5QiBTf.png'}
-            alt="boohoo"
-            >
-          </img>
-          <p style={{ margin: '5px 0 0 0' }}>comments, suggestions, criticism welcome :^)</p>
+          <p style={{ marginBottom: '5px' }}>made with ♥ by Gouldie</p>
+          {/*<img*/}
+            {/*src={'http://i.imgur.com/Y5QiBTf.png'}*/}
+            {/*alt="boohoo"*/}
+            {/*>*/}
+          {/*</img>*/}
+          {/*<p style={{ margin: '5px 0 0 0' }}>comments, suggestions, criticism welcome :^)</p>*/}
         </div>
       </div>
     )
