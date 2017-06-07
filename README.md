@@ -1,3 +1,4 @@
-Daycare app for PPO (pokemon-planet.com).
+Daycare app for [Pokemon Planet](https://www.pokemon-planet.com), a Pokemon MMORPG
 
-https://gouldie.github.io/ppo-daycare
+You can find it [here](https://gouldie.github.io/ppo-daycare)
+
