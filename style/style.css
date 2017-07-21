@@ -193,8 +193,10 @@ input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
 
-@media (min-width: 768px) {
-  .form-horizontal {
-    margin-left: 30% !important;
-  }
+.control-label {
+  margin-right: 10px;
+}
+
+.width-65 {
+  width: 65px !important;
 }
