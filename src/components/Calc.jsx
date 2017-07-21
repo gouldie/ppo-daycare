@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InlineEdit from 'react-edit-inline'
 
 export default class Calc extends Component {
   constructor(props) {
@@ -91,16 +92,20 @@ export default class Calc extends Component {
   }
 
   handleCostChange(e) {
-    let val = e.target.value
+    let val = e.message || e.target.value
     this.setState({ ratio: val }, () => {
       this.calcExp()
     })
   }
 
+  customValidateText(text) {
+    return text.length > 0 && /^\d+$/.test(Number(text)) && Number(text) <= 300 && Number(text) >= 0;
+  }
+
   render() {
     return (
       <div className='calc-div col-xs-12'>
-        <form className='form-horizontal col-sm-offset-4 col-sm-2' onSubmit={this.handleSubmit}>
+        <form className='form-horizontal col-sm-offset-3 col-sm-2' onSubmit={this.handleSubmit} style={{ marginLeft: '' }}>
           <div className='form-group calc-width'>
             <label htmlFor="level-start" className="control-label">Start</label>
             <div>
@@ -127,17 +132,29 @@ export default class Calc extends Component {
             <button type="submit" className="btn btn-primary submit-button">Add to Jobs</button>
           </div>
         </form>
-        <div className='result col-sm-2'>
-          <h5 style={{marginTop: '20px'}}><em>Exp Required</em></h5>
-          <p>{this.state.exp}</p>
+        <div className='result col-sm-3'>
+          <h5 style={{marginTop: '15px'}}><em>Exp Required</em></h5>
+          <p style={{ marginBottom: '15px' }}>{this.state.exp}</p>
           <h5 style={{minWidth: '100px'}}>
-            <em>Cost ({this.state.ratio}k/1kk)</em>
+            <em>Cost (</em>
+
+            <InlineEdit
+              staticElement="em"
+              validate={this.customValidateText}
+              text={String(this.state.ratio)}
+              paramName="message"
+              change={this.handleCostChange}
+            />
+
+            <em>k/1kk)</em>
             <input
               style={{marginTop: '20px', marginBottom: '20px'}}
               type='range'
               onChange={this.handleCostChange}
               min='1'
-              max='300'>
+              max='300'
+              value={this.state.ratio}
+            >
             </input>
           </h5>
           <p>${this.state.cost}</p>
