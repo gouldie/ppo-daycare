@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InlineEdit from 'react-edit-inline'
 
 export default class Calc extends Component {
   constructor(props) {
@@ -91,57 +92,84 @@ export default class Calc extends Component {
   }
 
   handleCostChange(e) {
-    let val = e.target.value
+    let val = e.message || e.target.value
     this.setState({ ratio: val }, () => {
       this.calcExp()
     })
   }
 
+  customValidateText(text) {
+    return text.length > 0 && /^\d+$/.test(Number(text)) && Number(text) <= 300 && Number(text) >= 0;
+  }
+
   render() {
     return (
       <div className='calc-div col-xs-12'>
-        <form className='form-horizontal col-sm-offset-4 col-sm-2' onSubmit={this.handleSubmit}>
-          <div className='form-group calc-width'>
-            <label htmlFor="level-start" className="control-label">Start</label>
-            <div>
-              <input
-                className='form-control'
-                type='number'
-                name='level-start'
-                value={this.state.start}
-                onChange={this.handleChangeStart}/>
-            </div>
+        <form className='form-inline' onSubmit={this.handleSubmit} style={{ marginTop: '20px' }}>
+          <div className='form-group' style={{ marginRight: '20px', display: 'inline-block' }}>
+            <label htmlFor="level-start" className="control-label">From</label>
+            <input
+              className='form-control width-65'
+              style={{ display: 'inline-block' }}
+              type='number'
+              name='level-start'
+              value={this.state.start}
+              onChange={this.handleChangeStart}/>
           </div>
-          <div className='form-group calc-width'>
-            <label htmlFor="level-end" className="control-label">End</label>
-            <div>
-              <input
-                className='form-control'
-                type='number'
-                name='level-end'
-                value={this.state.end}
-                onChange={this.handleChangeEnd}/>
-            </div>
+          <div className='form-group' style={{ display: 'inline-block' }}>
+            <label htmlFor="level-end" className="control-label">To</label>
+            <input
+              className='form-control width-65'
+              style={{ display: 'inline-block' }}
+              type='number'
+              name='level-end'
+              value={this.state.end}
+              onChange={this.handleChangeEnd}/>
           </div>
-          <div>
-            <button type="submit" className="btn btn-primary submit-button">Add to Jobs</button>
+          <div className='result'>
+            <div style={{minWidth: '100px'}}>
+              <div style={{ display:'inline-block', marginRight: '10px' }}>
+                <strong>Cost per 1kk exp</strong>
+              </div>
+
+              <div style={{ width: '250px', display: 'inline-block' }}>
+                <InlineEdit
+                  staticElement="strong"
+                  validate={this.customValidateText}
+                  text={String(this.state.ratio)}
+                  paramName="message"
+                  change={this.handleCostChange}
+                />k
+                <input
+                  name="test"
+                  style={{marginTop: '15px', marginBottom: '20px'}}
+                  type='range'
+                  onChange={this.handleCostChange}
+                  min='1'
+                  max='300'
+                  value={this.state.ratio}
+                >
+                </input>
+
+              </div>
+
+            </div>
+
+            <div>
+              <h4 style={{marginTop: '15px', marginRight: '5px', display: 'inline-block'}}><strong>Total Exp:</strong></h4>
+              <span style={{ marginBottom: '15px' }}>{this.state.exp}</span>
+            </div>
+
+            <div>
+              <h4 style={{ display: 'inline-block', marginRight: '5px' }}><strong>Total Cost:</strong></h4>
+              <span>${this.state.cost}</span>
+            </div>
+
+            <button type="submit" className="btn btn-primary submit-button" style={{ marginBottom: '10px' }}>Add to Jobs</button>
+
           </div>
         </form>
-        <div className='result col-sm-2'>
-          <h5 style={{marginTop: '20px'}}><em>Exp Required</em></h5>
-          <p>{this.state.exp}</p>
-          <h5 style={{minWidth: '100px'}}>
-            <em>Cost ({this.state.ratio}k/1kk)</em>
-            <input
-              style={{marginTop: '20px', marginBottom: '20px'}}
-              type='range'
-              onChange={this.handleCostChange}
-              min='1'
-              max='300'>
-            </input>
-          </h5>
-          <p>${this.state.cost}</p>
-        </div>
+
       </div>
     )
   }

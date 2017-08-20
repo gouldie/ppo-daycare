@@ -192,3 +192,11 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
+
+.control-label {
+  margin-right: 10px;
+}
+
+.width-65 {
+  width: 65px !important;
+}
