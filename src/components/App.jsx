@@ -22,8 +22,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>PPO Daycare Buddy</h1>
-        <h5 style={{ marginBottom: "5px" }}>currently using pre-summer event exp values.</h5>
-        <h5 style={{ marginTop: "5px" }}>until we know more, you can get a better price estimate by knocking 8% off the total cost.</h5>
+        <h5>updated with new exp as of the summer event.</h5>
         <Calc update={this.mapStorageToState} />
         <JobList update={this.mapStorageToState} />
 
