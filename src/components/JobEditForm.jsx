@@ -77,7 +77,7 @@ export default class JobEditForm extends Component {
   }
 
    onExpChange(e) {
-    this.setState({ exp: e.target.value })
+    this.setState({ exp: Number((e.target.value).replace(/\D/g,'')) })
   }
 
    onCostChange(e) {
