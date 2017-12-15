@@ -81,7 +81,7 @@ export default class JobEditForm extends Component {
   }
 
    onCostChange(e) {
-    this.setState({ cost: e.target.value })
+    this.setState({ cost: Number((e.target.value).replace(/\D/g,'')) })
   }
 
    onNotesChange(e) {
