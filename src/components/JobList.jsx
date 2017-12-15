@@ -76,7 +76,7 @@ export default class JobList extends Component {
               <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Exp</th>
               <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Cost</th>
               <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Notes</th>
-              <th className='set-width' style={{ width: '1px', whiteSpace: 'nowrap' }}>E/D</th>
+              <th className='set-width' style={{ width: '1px', whiteSpace: 'nowrap', minWidth: '60px' }}>E/D</th>
             </tr>
           </thead>
           <tbody>

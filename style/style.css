@@ -11,12 +11,13 @@ html {
 
 body {
   font-family: 'Raleway', sans-serif !important;
-  background: url(https://pldh.net/media/gallery/the493/banette.jpg) center center no-repeat !important;
+  background: url(https://pre00.deviantart.net/006a/th/pre/f/2017/017/5/6/spheal_wallpaper_1920_x_1080_by_ergoprime-davts2u.jpg) center center no-repeat !important;
   background-size: cover !important;
   position: relative;
   margin: 0;
   padding-bottom: 16rem;
   min-height: 100%;
+  min-width: 750px;
 }
 
 .footer {
