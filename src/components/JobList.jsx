@@ -66,23 +66,25 @@ export default class JobList extends Component {
     return (
       <div className='job-div col-xs-12'>
         <h3>Job List</h3>
-        <table className='table table-hover table-bordered'>
-          <thead>
-            <tr>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Owner</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Pokemon</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Level Start</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Level End</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Exp</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Cost</th>
-              <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Notes</th>
-              <th className='set-width' style={{ width: '1px', whiteSpace: 'nowrap', minWidth: '60px' }}>E/D</th>
-            </tr>
-          </thead>
-          <tbody>
-              {jobs.length && jobs.length > 0 ? this.renderList() : null}
-          </tbody>
-        </table>
+        <div style={{ maxHeight: '450px', overflowY: 'auto' }}>
+          <table className='table table-hover table-bordered'>
+            <thead>
+              <tr>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Owner</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Pokemon</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Level Start</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Level End</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Exp</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Cost</th>
+                <th style={{ width: '1px', whiteSpace: 'nowrap' }}>Notes</th>
+                <th className='set-width' style={{ width: '1px', whiteSpace: 'nowrap', minWidth: '60px' }}>E/D</th>
+              </tr>
+            </thead>
+            <tbody>
+                {jobs.length && jobs.length > 0 ? this.renderList() : null}
+            </tbody>
+          </table>
+        </div>
         {jobs.length ? jobs.length < 1 ? <div>No current jobs!</div> : null : <div>No current jobs!</div>}
       </div>
       )
