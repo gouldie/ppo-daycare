@@ -27,7 +27,7 @@ export default class Calc extends Component {
   }
 
   calcExp() {
-    const exp = [
+    let exp = [
       54,
       131,
       137,
@@ -128,6 +128,12 @@ export default class Calc extends Component {
       2364041,
       2462917,
     ]
+
+    // Exp lowered by 25% in update
+    exp.forEach((value, i) => {
+      exp[i] = value * 0.75
+    })
+
     const start = parseInt(this.state.start);
     const end = parseInt(this.state.end);
 

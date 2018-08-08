@@ -26,7 +26,7 @@ body {
 .footer {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 0;
   left: 0;
   text-align: center;
   margin-left: 'auto';
@@ -83,7 +83,7 @@ tr {
 }
 
 .job-edit-top {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .text-align-center {
