@@ -20,7 +20,7 @@ body {
   min-width: 750px;
 }
 .form-group {
-  margin-bottom: 0 !important;
+  margin-bottom: 10px !important;
 }
 
 .footer {
