@@ -23,7 +23,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>PPO Daycare Buddy</h1>
-        <h5>last updated 2. Feb 2019</h5>
+        <h5>last updated 12 Jan 2021</h5>
         <Calc update={this.mapStorageToState} />
         <JobList update={this.mapStorageToState} />
 
