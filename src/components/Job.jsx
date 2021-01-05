@@ -21,8 +21,8 @@ export const Job = (props) => {
       <td>{pokemon || '--'}</td>
       <td>{startLevel}</td>
       <td>{endLevel}</td>
-      <td>{Math.ceil(exp).toLocaleString()}</td>
-      <td>${Math.ceil(cost).toLocaleString()}</td>
+      <td>{exp.toLocaleString()}</td>
+      <td>${cost.toLocaleString()}</td>
       <td style={{maxWidth: '100px', overflow: 'hidden'}}>{notes|| '--'}</td>
       <td className='set-width'>
         <span
