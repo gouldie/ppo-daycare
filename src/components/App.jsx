@@ -5,6 +5,7 @@ import JobList from './JobList'
 export default class App extends Component {
   constructor() {
     super()
+    
     this.state = {
       jobs: JSON.parse(localStorage.getItem('__daycare')) || [],
     }

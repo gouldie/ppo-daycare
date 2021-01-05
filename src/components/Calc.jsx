@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InlineEdit from 'react-edit-inline'
+import EasyEdit from 'react-easy-edit'
 import exp from '../exp'
 
 export default class Calc extends Component {
@@ -20,7 +20,7 @@ export default class Calc extends Component {
     this.handleCostChange = this.handleCostChange.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     localStorage.getItem('__daycare') &&
     this.setState({
       jobs: JSON.parse(localStorage.getItem('__daycare'))
@@ -92,7 +92,7 @@ export default class Calc extends Component {
   }
 
   handleCostChange(e) {
-    let val = e.message || e.target.value
+    let val = typeof e === 'string' ? e : e.target.value
     this.setState({ ratio: val }, () => {
       this.calcExp()
     })
@@ -133,13 +133,17 @@ export default class Calc extends Component {
               </div>
 
               <div style={{ width: '250px', display: 'inline-block' }}>
-                <InlineEdit
-                  staticElement="strong"
-                  validate={this.customValidateText}
-                  text={String(this.state.ratio)}
-                  paramName="message"
-                  change={this.handleCostChange}
-                />k
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <EasyEdit
+                    type='text'
+                    onValidate={this.customValidateText}
+                    value={String(this.state.ratio)}
+                    hideSaveButton
+                    hideCancelButton
+                    saveOnBlur
+                    onSave={this.handleCostChange}
+                  /><span>k</span>
+                </div>
                 <input
                   name="test"
                   style={{marginTop: '15px', marginBottom: '20px'}}
